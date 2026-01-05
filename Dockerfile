@@ -16,8 +16,8 @@ COPY app ./app
 COPY start.sh .
 RUN chmod +x start.sh
 
-# Expose port
-EXPOSE 8000
+# Expose port (Render default is 10000)
+EXPOSE 10000
 
 # Run FastAPI with start script
-CMD ["./start.sh"]
+CMD ["sh", "./start.sh"]

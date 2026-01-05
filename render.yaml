@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: recycly-api
+    runtime: docker
+    region: singapore
+    plan: free
+    branch: main
+    healthCheckPath: /
+    envVars:
+      - key: TF_CPP_MIN_LOG_LEVEL
+        value: 2
+      - key: PORT
+        value: 8000
