@@ -5,6 +5,7 @@ if 'TF_CPP_MIN_LOG_LEVEL' not in os.environ:
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 import tensorflow as tf
 import numpy as np
 from PIL import Image
@@ -44,6 +45,17 @@ model = tf.keras.models.load_model(MODEL_PATH)
 # FASTAPI APP
 # =========================
 app = FastAPI(title="Recycly Image Classification API")
+
+# =========================
+# CORS CONFIGURATION
+# =========================
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # =========================
 # UTILS
