@@ -59,6 +59,7 @@ def preprocess_image(file_bytes):
 # ROUTES
 # =========================
 @app.get("/")
+@app.head("/")  # Support HEAD request untuk Render health check
 def root():
     return {
         "status": "API is running",
